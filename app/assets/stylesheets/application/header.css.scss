@@ -1,0 +1,10 @@
+header {
+  @include span-columns(12);
+  background-color: red;
+  .header-name {
+    float: left;
+  }
+  form {
+    float: right;
+  }
+}
