@@ -1,0 +1,6 @@
+@mixin clear-sans() {
+    font-family: 'Clear Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Clear Sans'),url(//brick.a.ssl.fastly.net/fonts/clearsans/400.woff) format('woff');
+}

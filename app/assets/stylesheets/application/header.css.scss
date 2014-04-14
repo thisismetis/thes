@@ -1,7 +1,9 @@
 header {
   @include span-columns(12);
-  background-color: red;
   .header-name {
+    color: $blue-font;
+    text-decoration: none;
+    font-size: 48px;
     float: left;
   }
   form {

@@ -2,24 +2,27 @@
 <html>
 <head>
   <title>Thes</title>
+
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Clear+Sans:400,700">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
 </head>
 <body>
-  <header>
-    <a href="#" class="header-name">Thes</a>
-    <nav>
-      <form>
-        <input type="email" placeholder="email">
-        <input type="password" placeholder="password">
-        <input type="submit" value="login">
-      </form>
-    </nav>
-  </header>
+  <div class="outer-container">
+    <header>
+      <a href="#" class="header-name">Thes</a>
+      <nav>
+        <form>
+          <input type="email" placeholder="email">
+          <input type="password" placeholder="password">
+          <input type="submit" value="login">
+        </form>
+      </nav>
+    </header>
 
-  <%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>
