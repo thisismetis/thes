@@ -1,0 +1,7 @@
+html, body {
+  background-color: $thes-gray;
+  @include clear-sans();
+}
+.outer-container {
+  @include outer-container;
+}

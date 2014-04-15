@@ -1,0 +1,24 @@
+.landing {
+  @include span-columns(12);
+  padding: 40px 0;
+  border-bottom: 1px solid $thes-blue;
+
+  .sign-up-container {
+    @include span-columns(6);
+    border-right: 1px solid $thes-blue;
+    @import "homes/forms/_sign_up_form";
+  }
+
+  .landing-nav {
+    @include span-columns(6);
+  }
+}
+.about {
+  @include span-columns(12);
+  border-bottom: 1px solid $thes-blue;
+  @import "homes/_nav";
+  h2 {
+    color: $thes-blue;
+    font-size: 26px;
+  }
+}
