@@ -17,6 +17,10 @@
     @include span-columns(4);
     color: $thes-blue;
 
+    h1 {
+      color: $medium-blue;
+    }
+
   }
   .talent-contact-info {
     @include span-columns(4);
@@ -33,7 +37,19 @@
 
 .talent-attributes {
   @include span-columns(12);
-  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid $thes-blue;
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    color: $medium-blue;
+  }
+
+  li {
+    list-style: none;
+    margin: 10px;
+    font-weight: bold;
+  }
 
   .talent-skills {
     @include span-columns(6);
@@ -41,4 +57,16 @@
   .talent-desires {
     @include span-columns(6);
   }
+}
+
+.cover-letter {
+  @include span-columns(12);
+  margin-top: 30px;
+  border-top: 1px solid $thes-blue;
+}
+
+.resume {
+  @include span-columns(12);
+  margin-top: 30px;
+  border-top: 1px solid $thes-blue;
 }
