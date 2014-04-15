@@ -30,3 +30,15 @@
     }
   }
 }
+
+.talent-attributes {
+  @include span-columns(12);
+  text-align: center;
+
+  .talent-skills {
+    @include span-columns(6);
+  }
+  .talent-desires {
+    @include span-columns(6);
+  }
+}

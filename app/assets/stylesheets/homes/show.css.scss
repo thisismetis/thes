@@ -6,19 +6,73 @@
   .sign-up-container {
     @include span-columns(6);
     border-right: 1px solid $thes-blue;
-    @import "homes/forms/_sign_up_form";
+    h2 {
+      color: $thes-blue;
+      font-size: 36px;
+      text-align: center;
+    }
+
+    form.talent-sign-up{
+
+      div {
+        text-align: center;
+      }
+
+      input[type=text], input[type=password], input[type=email] {
+        font-size: 20px;
+        margin: 16px 0;
+      }
+
+      button, input[type=submit] {
+        padding: 4px 10px;
+        font-size: 20px;
+        background-color: $thes-blue;
+        border: 0;
+        border-radius: 5px;
+        color: $thes-gray;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $medium-blue;
+        }
+      }
+    }
   }
 
   .landing-nav {
     @include span-columns(6);
+    ul {
+      li {
+        list-style: none;
+        margin: 50px;
+        background: $thes-blue;
+        text-align: center;
+        border-radius: 10px;
+        padding: 5px 0;
+
+        &:hover {
+          background-color: $medium-blue;
+        }
+
+        a {
+          text-decoration: none;
+          color: $thes-gray;
+          font-size: 30px;
+          padding: 0 10px;
+        }
+      }
+      li.active {
+        background-color: $medium-blue;
+      }
+    }
   }
 }
 .about {
   @include span-columns(12);
   border-bottom: 1px solid $thes-blue;
-  @import "homes/_nav";
   h2 {
     color: $thes-blue;
     font-size: 26px;
   }
 }
+
