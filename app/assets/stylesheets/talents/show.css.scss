@@ -1,19 +1,32 @@
 .talent-header {
   @include span-columns(12);
+  padding-top: 50px;
   .talent-picture {
     @include span-columns(4);
     img {
-      width: 300px;
-      height: 300px;
+      width: 150px;
+      height: 150px;
       border-radius: 150px;
       border: 1px solid black;
       background-color: red;
+      display: block;
+      margin: 0 auto;
     }
   }
   .talent-basic-info {
     @include span-columns(4);
+    color: $thes-blue;
+
   }
   .talent-contact-info {
     @include span-columns(4);
+    padding-top: 28px;
+    .contact-link {
+      color: $thes-blue;
+      text-decoration: none;
+      &:hover {
+        color: $medium-blue;
+      }
+    }
   }
 }
