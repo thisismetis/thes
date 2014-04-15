@@ -1,0 +1,72 @@
+.talent-header {
+  @include span-columns(12);
+  padding-top: 50px;
+  .talent-picture {
+    @include span-columns(4);
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 150px;
+      border: 1px solid black;
+      background-color: red;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .talent-basic-info {
+    @include span-columns(4);
+    color: $thes-blue;
+
+    h1 {
+      color: $medium-blue;
+    }
+
+  }
+  .talent-contact-info {
+    @include span-columns(4);
+    padding-top: 28px;
+    .contact-link {
+      color: $thes-blue;
+      text-decoration: none;
+      &:hover {
+        color: $medium-blue;
+      }
+    }
+  }
+}
+
+.talent-attributes {
+  @include span-columns(12);
+  margin-top: 30px;
+  border-top: 1px solid $thes-blue;
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    color: $medium-blue;
+  }
+
+  li {
+    list-style: none;
+    margin: 10px;
+    font-weight: bold;
+  }
+
+  .talent-skills {
+    @include span-columns(6);
+  }
+  .talent-desires {
+    @include span-columns(6);
+  }
+}
+
+.cover-letter {
+  @include span-columns(12);
+  margin-top: 30px;
+  border-top: 1px solid $thes-blue;
+}
+
+.resume {
+  @include span-columns(12);
+  margin-top: 30px;
+  border-top: 1px solid $thes-blue;
+}
