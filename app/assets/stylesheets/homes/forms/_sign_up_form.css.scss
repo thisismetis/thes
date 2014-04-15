@@ -1,0 +1,31 @@
+h2 {
+  color: $thes-blue;
+  font-size: 36px;
+  text-align: center;
+}
+
+form.talent-sign-up{
+
+  div {
+    text-align: center;
+  }
+
+  input[type=text], input[type=password], input[type=email] {
+    font-size: 20px;
+    margin: 16px 0;
+  }
+
+  button, input[type=submit] {
+    padding: 4px 10px;
+    font-size: 20px;
+    background-color: $thes-blue;
+    border: 0;
+    border-radius: 5px;
+    color: $thes-gray;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $medium-blue;
+    }
+  }
+}
