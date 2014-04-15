@@ -4,4 +4,5 @@ Thes::Application.routes.draw do
 
   resources 'talents', only: [:show]
 
+  resources :linkedin
 end
