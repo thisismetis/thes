@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :basic_profile
+  has_one :full_profile
   has_one :linkedin_oauth_setting
 end
