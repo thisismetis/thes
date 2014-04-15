@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415201614) do
+ActiveRecord::Schema.define(version: 20140415201938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "basic_profiles", force: true do |t|
+    t.text     "first_name"
+    t.text     "last_name"
+    t.text     "maiden_name"
+    t.text     "formatted_name"
+    t.text     "headline"
+    t.text     "location"
+    t.text     "industry"
+    t.text     "summary"
+    t.text     "specialties"
+    t.text     "picture_url"
+    t.text     "public_profile_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "linkedin_oauth_settings", force: true do |t|
     t.string   "atoken"

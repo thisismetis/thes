@@ -16,7 +16,6 @@ class LinkedinController < ApplicationController
 
   def linkedin_profile
     @basic_profile = get_basic_profile
-    @full_profile = get_full_profile
     @positions = get_positions
     @educations = get_educations
   end
@@ -69,22 +68,22 @@ class LinkedinController < ApplicationController
       bprofile
     end
   end
-
-  def get_full_profile
-    fprofile = FullProfile.find_by_user_id(current_user.id)
-    if fprofile.nil?
-      client = get_client
-      full_profile = client.profile(:fields => [:associations, :honors, :interests])
-      full_profile = full_profile.to_hash
-      new_full_profile = FullProfile.new(full_profile)
-      new_full_profile.user = current_user
-      new_full_profile.save
-      new_full_profile
-    else
-      fprofile
-    end
-  end
-
+#
+#   def get_full_profile
+#     fprofile = FullProfile.find_by_user_id(current_user.id)
+#     if fprofile.nil?
+#       client = get_client
+#       full_profile = client.profile(:fields => [:associations, :honors, :interests])
+#       full_profile = full_profile.to_hash
+#       new_full_profile = FullProfile.new(full_profile)
+#       new_full_profile.user = current_user
+#       new_full_profile.save
+#       new_full_profile
+#     else
+#       fprofile
+#     end
+#   end
+#
   def get_positions
     positions = Position.find_all_by_full_profile_id(current_user.full_profile.id)
     if positions.empty?
