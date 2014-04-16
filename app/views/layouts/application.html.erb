@@ -20,6 +20,7 @@
           <input type="submit" value="Sign In">
         </form>
       </nav>
+      <li><%= link_to "Sign out", "/users/sign_out", :method => "DELETE" %></li>
     </header>
 
     <%= yield %>
