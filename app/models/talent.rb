@@ -1,4 +1,2 @@
-class Talent
-  def self.create(token)
-  end
+class Talent < User
 end

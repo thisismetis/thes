@@ -1,11 +1,8 @@
 class TalentsController < ApplicationController
   def create
-    token, secret = authorize_with_linkedin
-    linkedin_client = linkedin.authorize_from_access(token, secret)
-    talent_details = linkedin_client.get_profile
-    logger.debug talent_details.inspect
-    Talent.create talent_details
-    LinkedInOauthSetting.create(token, secret, talent.id)
+    linkedin_client = authorize_with_linkedin
+    handler = TalentSignupHandler.new linkedin_client
+    talent = handler.process
     redirect_to talent
   end
 end

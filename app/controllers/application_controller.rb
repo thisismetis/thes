@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_with_linkedin
-    linkedin.authorize_from_request(
+    linkedin.authorize(
       session[:rtoken],
       session[:rsecret],
       session[:oauth_verifier])

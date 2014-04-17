@@ -3,7 +3,7 @@ class LinkedInWrapper
   LINKEDIN_CONFIG = {
     site: "https://api.linkedin.com",
     authorize_path: "/uas/oauth/authenticate",
-    request_token_path: "/uas/oauth/requestToken?scope=r_fullprofile",
+    request_token_path: "/uas/oauth/requestToken?scope=r_fullprofile+r_emailaddress+w_messages+r_contactinfo",
     access_token_path: "/uas/oauth/accessToken"
   }
 
@@ -19,23 +19,29 @@ class LinkedInWrapper
     client.request_token(oauth_callback: callback_url)
   end
 
-  def authorize_from_request(token, secret, pin)
-    client.authorize_from_request(token, secret, pin)
-  end
-
-  def authorize_from_access(token, secret)
+  def authorize(token, secret, pin)
+    token, secret = client.authorize_from_request(token, secret, pin)
     client.authorize_from_access(token, secret)
     self
   end
 
   def get_profile
-    client.profile({fields:
+    client.profile(fields: [
       "first-name",
       "last-name",
+      "email-address",
       :industry,
       :summary,
-      :skills).
+      :skills]).
     to_hash
+  end
+
+  def atoken
+    client.auth_token
+  end
+
+  def asecret
+    client.auth_secret
   end
 
   private
