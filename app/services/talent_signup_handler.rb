@@ -21,4 +21,11 @@ class TalentSignupHandler
   def make_user(details)
     User.create(email: details["email_address"], type: TALENT)
   end
+
+  def make_oauth(talent)
+    LinkedinOauthSetting.create(
+      atoken: client.atoken,
+      asecret: client.asecret,
+      user: talent)
+  end
 end

@@ -7,6 +7,8 @@ class LinkedInWrapper
     access_token_path: "/uas/oauth/accessToken"
   }
 
+  attr_reader :atoken, :asecret
+
   def initialize
     @client = LinkedIn::Client.new(
       ENV['LINKEDIN_KEY'],
@@ -19,9 +21,10 @@ class LinkedInWrapper
     client.request_token(oauth_callback: callback_url)
   end
 
-  def authorize(token, secret, pin)
-    token, secret = client.authorize_from_request(token, secret, pin)
-    client.authorize_from_access(token, secret)
+  def authorize(rtoken, rsecret, pin)
+    @atoken, @asecret = client.authorize_from_request(rtoken, rsecret, pin)
+    client.authorize_from_access(atoken, asecret)
+    Rails.logger.debug self.inspect
     self
   end
 
@@ -34,14 +37,6 @@ class LinkedInWrapper
       :summary,
       :skills]).
     to_hash
-  end
-
-  def atoken
-    client.auth_token
-  end
-
-  def asecret
-    client.auth_secret
   end
 
   private
