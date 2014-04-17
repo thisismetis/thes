@@ -28,4 +28,14 @@ class TalentSignupHandler
       asecret: client.asecret,
       user: talent)
   end
+
+  def make_profile(talent, details)
+    TalentProfile.create(
+      first_name: details["first_name"],
+      last_name: details["last_name"],
+      industry: details["industry"],
+      summary: details["summary"],
+      talent: talent
+    )
+  end
 end
