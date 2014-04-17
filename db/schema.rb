@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417202323) do
+ActiveRecord::Schema.define(version: 20140417202849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140417202323) do
   end
 
   add_index "linkedin_oauth_settings", ["user_id"], name: "index_linkedin_oauth_settings_on_user_id", using: :btree
+
+  create_table "proficiencies", force: true do |t|
+    t.integer  "talent_profile_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proficiencies", ["skill_id"], name: "index_proficiencies_on_skill_id", using: :btree
+  add_index "proficiencies", ["talent_profile_id"], name: "index_proficiencies_on_talent_profile_id", using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name"

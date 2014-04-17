@@ -7,11 +7,11 @@ class TalentSignupHandler
 
   def process
     talent_details = client.get_profile
-    Rails.logger.debug talent_details.inspect
     talent = make_user talent_details
     make_oauth talent
     profile = make_profile(talent, talent_details)
     store_proficiencies(profile, talent_details["skills"]["all"])
+    talent
   end
 
   private
@@ -47,15 +47,13 @@ class TalentSignupHandler
 
   def generate_skill_rows(profile, skills)
     skills.map do |skill|
-      { profile: profile, skill: skill }
+      { talent_profile: profile, skill: skill }
     end
   end
 
-  def get_skills(new_skills)
-    skills = []
-    new_skills.each do |skill|
-      skills << Skill.find_or_create_by(name: skill["skill"]["name"])
+  def get_skills(skills)
+    skills.map do |skill|
+      Skill.find_or_create_by(name: skill["skill"]["name"])
     end
-    skills
   end
 end

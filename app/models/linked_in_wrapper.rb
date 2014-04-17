@@ -24,7 +24,6 @@ class LinkedInWrapper
   def authorize(rtoken, rsecret, pin)
     @atoken, @asecret = client.authorize_from_request(rtoken, rsecret, pin)
     client.authorize_from_access(atoken, asecret)
-    Rails.logger.debug self.inspect
     self
   end
 
