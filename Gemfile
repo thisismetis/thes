@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'neat'
+gem 'linkedin'
 group :doc do
   gem 'sdoc', require: false
 end
@@ -15,4 +16,5 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'dotenv-rails'
 end
