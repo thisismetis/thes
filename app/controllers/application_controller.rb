@@ -6,7 +6,17 @@ class ApplicationController < ActionController::Base
   private
 
   def get_linkedin_request_token
-    linkedin = LinkedIn.new
-    linkedin.request_token
+    linkedin.request_token request
+  end
+
+  def authorize_with_linkedin
+    linkedin.authorize_from_request(
+      session[:rtoken],
+      session[:rsecret],
+      session[:oauth_verifier])
+  end
+
+  def linkedin
+    LinkedInWrapper.new
   end
 end
