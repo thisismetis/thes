@@ -3,7 +3,7 @@ class LinkedInWrapper
   LINKEDIN_CONFIG = {
     site: "https://api.linkedin.com",
     authorize_path: "/uas/oauth/authenticate",
-    request_token_path: "/uas/oauth/requestToken?scope=r_fullprofile+r_emailaddress+w_messages+r_contactinfo",
+    request_token_path: "/uas/oauth/requestToken?scope=r_fullprofile+r_emailaddress+w_messages+r_contactinfo+rw_company_admin",
     access_token_path: "/uas/oauth/accessToken"
   }
 
