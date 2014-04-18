@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418134931) do
+ActiveRecord::Schema.define(version: 20140418140250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "company_industries", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "industry_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "company_industries", ["company_id"], name: "index_company_industries_on_company_id", using: :btree
+  add_index "company_industries", ["industry_id"], name: "index_company_industries_on_industry_id", using: :btree
 
   create_table "company_profiles", force: true do |t|
     t.integer  "company_id"

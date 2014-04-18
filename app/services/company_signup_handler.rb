@@ -6,7 +6,8 @@ class CompanySignupHandler
   end
 
   def process
-    company_details = client.get_profile
+    company_details = client.get_company_profile
+    Rails.logger.debug company_details
     company = make_user company_details
     make_oauth company
     profile = make_profile(company, company_details)

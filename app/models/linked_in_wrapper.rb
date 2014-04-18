@@ -10,7 +10,7 @@ class LinkedInWrapper
   attr_reader :atoken, :asecret
 
   def initialize
-    @client = LinkedIn::Client.new(
+    @client = ThesLinkedInClient.new(
       ENV['LINKEDIN_KEY'],
       ENV['LINKEDIN_SECRET'],
       LINKEDIN_CONFIG)
@@ -36,6 +36,23 @@ class LinkedInWrapper
       :summary,
       :skills]).
     to_hash
+  end
+
+  def get_company_profile
+    companies = client.companies.to_hash
+    company_id = companies["all"].first["id"]
+    details = client.company_profile(company_id, fields: [
+      :id,
+      :name,
+      "logo-url",
+      "employee-count-range",
+      :locations,
+      :industries,
+      :description]).
+    to_hash
+    profile = client.profile(fields: ["email-address"]).to_hash
+    details["email_address"] = profile["email_address"]
+    details
   end
 
   private
