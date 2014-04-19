@@ -1,13 +1,10 @@
 class TalentSignupHandler
+  include SignupHandler
   TALENT = "Talent"
-
-  def initialize(client)
-    @client = client
-  end
 
   def process
     talent_details = client.get_profile
-    talent = make_user talent_details
+    talent = make_user(talent_details["email_address"], TALENT)
     make_oauth talent
     profile = make_profile(talent, talent_details)
     store_proficiencies(profile, talent_details["skills"]["all"])
@@ -15,19 +12,6 @@ class TalentSignupHandler
   end
 
   private
-
-  attr_reader :client
-
-  def make_user(details)
-    User.create(email: details["email_address"], type: TALENT)
-  end
-
-  def make_oauth(talent)
-    LinkedinOauthSetting.create(
-      atoken: client.atoken,
-      asecret: client.asecret,
-      user: talent)
-  end
 
   def make_profile(talent, details)
     TalentProfile.create(
