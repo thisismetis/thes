@@ -21,7 +21,7 @@ class CompanySignupHandler
   attr_reader :client
 
   def prepare_locations(locations)
-    locations.map { |location| Location.create(postal_code: location["postal_code"]) }
+    locations.map { |location| Location.create(postal_code: location["address"]["postal_code"]) }
   end
 
   def prepare_industries(industries)
@@ -40,9 +40,8 @@ class CompanySignupHandler
   end
 
   def make_profile(company, details)
-    Rails.logger.debug details.inspect
     CompanyProfile.create(
-      id: details["id"],
+      linkedin_id: details["id"],
       name: details["name"],
       industries: details["industries"],
       logo_url: details["logo_url"],
