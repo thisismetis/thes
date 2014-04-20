@@ -11,19 +11,20 @@ class TalentSignupHandler
 
   def process
     talent, data = pre_processor
-    processors.each do |processor|
-      talent = processor.run(talent, data)
+    processes.each do |process|
+      talent = process.run(talent, data)
     end
     talent.save
   end
 
   private
 
-  attr_reader :client
+  attr_reader :client, :gatherer, :processes
 
   def pre_processor
     talent = Talent.new
-    data = gatherer.get_data
+    talent.profile = TalentProfile.new
+    data = gatherer.run
     [talent, data]
   end
 
@@ -31,16 +32,6 @@ class TalentSignupHandler
     processes << UserHandler.new(client)
     processes << SkillHandler.new
     processes << TalentProfileGenerator.new
-  end
-
-  def make_profile(talent, details)
-    TalentProfile.create(
-      first_name: details["first_name"],
-      last_name: details["last_name"],
-      industry: details["industry"],
-      summary: details["summary"],
-      talent: talent
-    )
   end
 
 end

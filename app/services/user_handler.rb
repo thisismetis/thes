@@ -9,6 +9,7 @@ class UserHandler
     parse_data data
     user.email = email
     user.oauth = make_oauth
+    user
   end
 
   private

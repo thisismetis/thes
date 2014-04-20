@@ -11,7 +11,7 @@ class TalentDataGatherer
 
   private
 
-  attr_reader :client, :friend
+  attr_reader :client, :fields
 
   def fields_to_get
     [
