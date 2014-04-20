@@ -27,15 +27,8 @@ class LinkedInWrapper
     self
   end
 
-  def get_profile
-    client.profile(fields: [
-      "first-name",
-      "last-name",
-      "email-address",
-      :industry,
-      :summary,
-      :skills]).
-    to_hash
+  def get_talent_profile(fields)
+    client.profile(fields).to_hash
   end
 
   def get_company_profile
