@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419020607) do
+ActiveRecord::Schema.define(version: 20140421140430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20140419020607) do
     t.integer  "talent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture_url"
+    t.string   "linkedin_id"
   end
 
   add_index "talent_profiles", ["talent_id"], name: "index_talent_profiles_on_talent_id", using: :btree

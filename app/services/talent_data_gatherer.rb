@@ -18,9 +18,11 @@ class TalentDataGatherer
       "first-name",
       "last-name",
       "email-address",
+      "picture-url",
       :industry,
       :summary,
-      :skills
+      :skills,
+      :id
     ]
   end
 end

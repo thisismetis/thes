@@ -15,6 +15,7 @@ class TalentSignupHandler
       talent = process.run(talent, data)
     end
     talent.save
+    talent
   end
 
   private
