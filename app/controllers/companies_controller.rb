@@ -4,8 +4,13 @@ class CompaniesController < ApplicationController
 
   def create
     linkedin_client = authorize_with_linkedin
-    handler = CompanySignupHandler.new linkedin_client
-    company = handler.process
-    redirect_to company
+    redirect_to new_company(linkedin_client)
+  end
+
+  private
+
+  def new_company(client)
+    handler = CompanySignupHandler.new client
+    handler.process
   end
 end

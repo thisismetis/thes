@@ -31,24 +31,18 @@ class LinkedInWrapper
     client.profile(fields).to_hash
   end
 
-  def get_company_profile
-    companies = client.companies.to_hash
-    company_id = companies["all"].first["id"]
+  def get_company_profile(company_id, fields)
     details = client.company_profile(fields: {
       id: company_id,
-      all: [
-        :id,
-        :name,
-        "logo-url",
-        "employee-count-range",
-        :locations,
-        :industries,
-        :description]
-    }).
-    to_hash
+      all: fields
+    }).to_hash
     profile = client.profile(fields: ["email-address"]).to_hash
     details["email_address"] = profile["email_address"]
     details
+  end
+
+  def companies
+    client.companies
   end
 
   private

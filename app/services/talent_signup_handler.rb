@@ -1,5 +1,4 @@
 class TalentSignupHandler
-  include SignupHandler
   TALENT = "Talent"
 
   def initialize(client)
@@ -11,9 +10,7 @@ class TalentSignupHandler
 
   def process
     talent, data = pre_processor
-    processes.each do |process|
-      talent = process.run(talent, data)
-    end
+    talent = process_talent(talent, data)
     talent.save
     talent
   end
@@ -22,17 +19,21 @@ class TalentSignupHandler
 
   attr_reader :client, :gatherer, :processes
 
+  def process_talent(talent, data)
+    processes.inject do |talent, process|
+      process.run(talent, data)
+    end
+  end
+
   def pre_processor
     talent = Talent.new
-    talent.profile = TalentProfile.new
     data = gatherer.run
     [talent, data]
   end
 
   def add_processes
     processes << UserHandler.new(client)
-    processes << SkillHandler.new
     processes << TalentProfileGenerator.new
+    processes << SkillsHandler.new
   end
-
 end

@@ -1,9 +1,9 @@
-class SkillHandler
+class SkillsHandler
 
   def run(user, data)
     parse_skills data
     skills = generate_skills
-    user.skills = skills
+    user.profile.skills = skills
     user
   end
 

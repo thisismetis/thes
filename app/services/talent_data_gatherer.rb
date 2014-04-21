@@ -2,7 +2,6 @@ class TalentDataGatherer
 
   def initialize(client)
     @client = client
-    @fields = fields_to_get
   end
 
   def run
@@ -11,9 +10,9 @@ class TalentDataGatherer
 
   private
 
-  attr_reader :client, :fields
+  attr_reader :client
 
-  def fields_to_get
+  def fields
     [
       "first-name",
       "last-name",

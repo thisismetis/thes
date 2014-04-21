@@ -1,37 +1,41 @@
 class CompanySignupHandler
-  include SignupHandler
   COMPANY = "Company"
 
+  def initialize(client)
+    @client = client
+    @gatherer = CompanyDataGatherer.new client
+    @processes = []
+    add_processes
+  end
+
   def process
-    company_details = client.get_company_profile
-    company = make_user(company_details["email_address"], COMPANY)
-    make_oauth company
-    company_details["industries"] = prepare_industries company_details["industries"]["all"]
-    company_details["locations"] = prepare_locations company_details["locations"]["all"]
-    profile = make_profile(company, company_details)
+    company, data = pre_processor
+    company = process_company(company, data)
+    company.save
     company
   end
 
   private
 
-  def prepare_locations(locations)
-    locations.map { |location| Location.create(postal_code: location["address"]["postal_code"]) }
+  attr_reader :client, :gatherer, :processes
+
+  def process_company(company, data)
+    processes.inject(company) do |company, process|
+      process.run(company, data)
+    end
   end
 
-  def prepare_industries(industries)
-    industries.map { |industry| Industry.find_or_create_by(linkedin_id: industry["code"], name: industry["name"]) }
+  def pre_processor
+    company = Company.new
+    company.profile = CompanyProfile.new
+    data = gatherer.run
+    [company, data]
   end
 
-  def make_profile(company, details)
-    CompanyProfile.create(
-      linkedin_id: details["id"],
-      name: details["name"],
-      industries: details["industries"],
-      logo_url: details["logo_url"],
-      employee_count_range: details["employee_count_range"]["name"],
-      locations: details["locations"],
-      description: details["description"],
-      company: company
-    )
+  def add_processes
+    processes << UserHandler.new(client)
+    processes << CompanyProfileGenerator.new
+    processes << IndustriesHandler.new
+    processes << LocationsHandler.new
   end
 end

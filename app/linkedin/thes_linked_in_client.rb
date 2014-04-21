@@ -2,7 +2,6 @@ class ThesLinkedInClient < LinkedIn::Client
   def companies(options = {})
     options.merge!(is_admin: "true")
     path = company_path(options)
-    Rails.logger.debug "Thing2: #{path}"
     simple_query(path, options)
   end
 
@@ -24,10 +23,7 @@ class ThesLinkedInClient < LinkedIn::Client
   private
 
   def strip_tilda(path)
-    if path.last == "~"
-      path.chop!
-    end
-    path
+    path.gsub(/~\z/, "")
   end
 
   def company_profile_fields(fields)
