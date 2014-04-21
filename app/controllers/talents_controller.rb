@@ -4,6 +4,11 @@ class TalentsController < ApplicationController
     redirect_to new_talent(linkedin_client)
   end
 
+  def show
+    @talent = Talent.find(params[:id])
+    @profile = @talent.profile
+  end
+
   private
 
   def new_talent(client)

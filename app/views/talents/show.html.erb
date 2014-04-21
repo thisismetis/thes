@@ -1,19 +1,19 @@
 <div class="talent-header">
   <div class="talent-picture">
-    <img src="">
+    <%= image_tag @profile.picture_url %>
   </div>
   <div class="talent-basic-info">
-    <h1>Name</h1>
+    <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
     <p>
-      Profession
+      <%= @profile.industry %>
     </p>
   </div>
   <div class="talent-contact-info">
     <p>
-      <a href="#" class="contact-link">Github/Dribbble</a>
+     <%= link_to @talent.email %>
     </p>
     <p>
-      <a href="#" class="contact-link">Email</a>
+      <%= @profile.summary %>
     </p>
   </div>
 </div>
@@ -22,15 +22,24 @@
   <div class="talent-skills">
     <h2>Skills </h2>
     <ul>
-      <li>Rails</li>
-      <li>Ruby</li>
-      <li>Java</li>
-      <li>Sass!!!</li>
-      <li>CSS</li>
+      <li>
+      <% @profile.skills.each do |skill| %>
+        <div class="skill-button">
+          <%= skill.name %> 
+        </div>
+      <% end %>
+      </li>
     </ul>
   </div>
   <div class="talent-desires">
     <h2> Desires </h2>
+    <p>
+      <ul>
+        <div class="desire-button">
+          <li>What I want out of a company</li>
+        </div>
+      </ul>
+    </p>
   </div>
 </div>
 
