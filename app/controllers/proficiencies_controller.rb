@@ -1,4 +1,5 @@
 class ProficienciesController < ApplicationController
+
   def edit
     @talent = find_talent
     @proficiencies = @talent.profile.proficiencies
@@ -6,8 +7,11 @@ class ProficienciesController < ApplicationController
 
   def update
     talent = find_talent
-    talent.update(proficiencies_params)
-    redirect_to talent
+    if talent.update(proficiencies_params)
+      redirect_to talent
+    else
+      redirect_to edit_talent_proficiencies_path(talent)
+    end
   end
 
   private

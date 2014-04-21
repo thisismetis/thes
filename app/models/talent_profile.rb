@@ -4,4 +4,5 @@ class TalentProfile < ActiveRecord::Base
   has_many :skills, through: :proficiencies
 
   accepts_nested_attributes_for :proficiencies
+  validates_associated :proficiencies
 end
