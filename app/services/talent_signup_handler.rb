@@ -3,57 +3,37 @@ class TalentSignupHandler
 
   def initialize(client)
     @client = client
+    @gatherer = TalentDataGatherer.new client
+    @processes = []
+    add_processes
   end
 
   def process
-    talent_details = client.get_profile
-    talent = make_user talent_details
-    make_oauth talent
-    profile = make_profile(talent, talent_details)
-    store_proficiencies(profile, talent_details["skills"]["all"])
+    talent, data = pre_processor
+    talent = process_talent(talent, data)
+    talent.save
     talent
   end
 
   private
 
-  attr_reader :client
+  attr_reader :client, :gatherer, :processes
 
-  def make_user(details)
-    User.create(email: details["email_address"], type: TALENT)
-  end
-
-  def make_oauth(talent)
-    LinkedinOauthSetting.create(
-      atoken: client.atoken,
-      asecret: client.asecret,
-      user: talent)
-  end
-
-  def make_profile(talent, details)
-    TalentProfile.create(
-      first_name: details["first_name"],
-      last_name: details["last_name"],
-      industry: details["industry"],
-      summary: details["summary"],
-      talent: talent
-    )
-  end
-
-  def store_proficiencies(profile, skills)
-    profile_skills = get_skills skills
-    skill_rows = generate_skill_rows(profile, profile_skills)
-    Proficiencies.create skill_rows
-  end
-
-  def generate_skill_rows(profile, skills)
-    skills.map do |skill|
-      { talent_profile: profile, skill: skill }
+  def process_talent(talent, data)
+    processes.inject(talent) do |talent, process|
+      process.run(talent, data)
     end
   end
 
-  def get_skills(skills)
-    skills.map do |skill|
-      Skill.find_or_create_by(name: skill["skill"]["name"])
-    end
+  def pre_processor
+    talent = Talent.new
+    data = gatherer.run
+    [talent, data]
+  end
+
+  def add_processes
+    processes << UserHandler.new(client)
+    processes << TalentProfileGenerator.new
+    processes << SkillsHandler.new
   end
 end

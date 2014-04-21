@@ -3,14 +3,14 @@ class LinkedInWrapper
   LINKEDIN_CONFIG = {
     site: "https://api.linkedin.com",
     authorize_path: "/uas/oauth/authenticate",
-    request_token_path: "/uas/oauth/requestToken?scope=r_fullprofile+r_emailaddress+w_messages+r_contactinfo",
+    request_token_path: "/uas/oauth/requestToken?scope=r_fullprofile+r_emailaddress+w_messages+r_contactinfo+rw_company_admin",
     access_token_path: "/uas/oauth/accessToken"
   }
 
   attr_reader :atoken, :asecret
 
   def initialize
-    @client = LinkedIn::Client.new(
+    @client = ThesLinkedInClient.new(
       ENV['LINKEDIN_KEY'],
       ENV['LINKEDIN_SECRET'],
       LINKEDIN_CONFIG)
@@ -27,15 +27,22 @@ class LinkedInWrapper
     self
   end
 
-  def get_profile
-    client.profile(fields: [
-      "first-name",
-      "last-name",
-      "email-address",
-      :industry,
-      :summary,
-      :skills]).
-    to_hash
+  def get_talent_profile(fields)
+    client.profile(fields).to_hash
+  end
+
+  def get_company_profile(company_id, fields)
+    details = client.company_profile(fields: {
+      id: company_id,
+      all: fields
+    }).to_hash
+    profile = client.profile(fields: ["email-address"]).to_hash
+    details["email_address"] = profile["email_address"]
+    details
+  end
+
+  def companies
+    client.companies
   end
 
   private
