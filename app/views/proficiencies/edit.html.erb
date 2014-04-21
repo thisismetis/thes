@@ -1,4 +1,5 @@
 <%= form_for @talent, url: talent_proficiencies_path(@talent), method: :patch do |form| %>
+  <%= flash[:proficiencies_error] %>
   <%= form.fields_for :profile, @talent.profile do |p_fields| %>
     <% @proficiencies.each do |proficiency| %>
       <%= p_fields.fields_for :proficiencies, proficiency do |pr_fields| %>

@@ -10,6 +10,7 @@ class ProficienciesController < ApplicationController
     if talent.update(proficiencies_params)
       redirect_to talent
     else
+      flash[:proficiencies_error] = "You must fill out a level for every skill."
       redirect_to edit_talent_proficiencies_path(talent)
     end
   end
