@@ -1,0 +1,16 @@
+<%= form_for @talent, url: talent_proficiencies_path(@talent), method: :patch do |form| %>
+  <% @proficiencies.each do |proficiency| %>
+    <%= fields_for :proficiency, proficiency do |p_fields| %>
+      <div>
+        <%= "#{proficiency.skill.name}:" %>
+        <%= p_fields.label(:level, "Beginner") %>
+        <%= p_fields.radio_button(:level, 1) %>
+        <%= p_fields.label(:level, "Intermediate") %>
+        <%= p_fields.radio_button(:level, 2) %>
+        <%= p_fields.label(:level, "Advanced") %>
+        <%= p_fields.radio_button(:level, 3) %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= form.submit "Submit" %>
+<% end %>

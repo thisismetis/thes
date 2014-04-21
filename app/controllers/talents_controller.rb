@@ -1,7 +1,8 @@
 class TalentsController < ApplicationController
   def create
     linkedin_client = authorize_with_linkedin
-    redirect_to new_talent(linkedin_client)
+    talent = new_talent(linkedin_client)
+    redirect_to edit_talent_proficiencies_path(talent)
   end
 
   def show
