@@ -20,7 +20,7 @@ class TalentSignupHandler
   attr_reader :client, :gatherer, :processes
 
   def process_talent(talent, data)
-    processes.inject do |talent, process|
+    processes.inject(talent) do |talent, process|
       process.run(talent, data)
     end
   end
