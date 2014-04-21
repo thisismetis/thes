@@ -1,0 +1,12 @@
+<div class="talent-skills">
+  <h2>Skills </h2>
+  <ul>
+    <li>
+    <% @profile.skills.each do |skill| %>
+      <div class="skill-button">
+        <%= skill.name %> 
+      </div>
+    <% end %>
+    </li>
+  </ul>
+</div>

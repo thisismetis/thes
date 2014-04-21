@@ -1,58 +1,12 @@
 <div class="talent-header">
-  <div class="talent-picture">
-    <%= image_tag @profile.picture_url %>
-  </div>
-  <div class="talent-basic-info">
-    <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
-    <p>
-      <%= @profile.industry %>
-    </p>
-  </div>
-  <div class="talent-contact-info">
-    <p>
-     <%= link_to @talent.email %>
-    </p>
-    <p>
-      <%= @profile.summary %>
-    </p>
-  </div>
+  <%= render "header" %>
 </div>
 
 <div class="talent-attributes">
-  <div class="talent-skills">
-    <h2>Skills </h2>
-    <ul>
-      <li>
-      <% @profile.skills.each do |skill| %>
-        <div class="skill-button">
-          <%= skill.name %> 
-        </div>
-      <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="talent-desires">
-    <h2> Desires </h2>
-    <p>
-      <ul>
-        <div class="desire-button">
-          <li>What I want out of a company</li>
-        </div>
-      </ul>
-    </p>
-  </div>
+  <%= render "skill" %>
+  <%= render "desire" %>
 </div>
 
-<div class="cover-letter">
-  <h2> Cover Letter </h2>
-  <p>
-    Blah blah blah
-  </p>
-</div>
+<%= render "cover_letter" %>
 
-<div class="resume">
-  <h2>Resume</h2>
-  <p>
-    Blah Blah Blah
-  </p>
-</div>
+<%= render "resume" %>

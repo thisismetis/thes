@@ -1,0 +1,17 @@
+<div class="talent-picture">
+  <%= image_tag @profile.picture_url %>
+</div>
+<div class="talent-basic-info">
+  <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+  <p>
+    <%= @profile.industry %>
+  </p>
+</div>
+<div class="talent-contact-info">
+  <p>
+   <%= link_to @talent.email %>
+  </p>
+  <p>
+    <%= @profile.summary %>
+  </p>
+</div>
