@@ -8,4 +8,6 @@ Thes::Application.routes.draw do
   resources 'companies', only: [:show, :create]
   resources 'users', only: [:new]
   resource 'linkedin', only: [:create]
+
+  resource 'search', only: [:show, :new]
 end
