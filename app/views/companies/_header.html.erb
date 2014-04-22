@@ -1,5 +1,5 @@
 <div class="company-logo">
-  <%= image_tag @profile.logo_url %>
+  <%= image_tag @profile.logo_url, alt:"#{@profile.name}" %>
 </div>
 <div class="company-basic-info">
   <h1><%= @profile.name %></h1>
