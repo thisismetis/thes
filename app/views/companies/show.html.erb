@@ -1,25 +1,7 @@
 <div class="company-header">
-  <div class="company-logo">
-    <%= image_tag @profile.logo_url %>
-  </div>
-  <div class="company-basic-info">
-    <h1><%= @profile.name %></h1> <br>
-        <%= @profile.description %>
-  </div>
-  <div class="company-contact-info">
-    <p>
-    <h3>Contact Info</h3>
-      <ul>
-        <li><%= @company.email %></li>
-        <li>phone number</li>
-      </ul>
-    </p>
-  </div>
-  <div class="company-attributes">
-    <h2>About the Company</h2>
-    Employee Range: <%= @profile.employee_count_range %>
-    <div class="company-desires">
-      Company is looking for...
-    </div>
-  </div>
+  <%= render "header" %>
+</div>
+
+<div class="company-attributes">
+  <%= render "attribute" %>
 </div>

@@ -1,7 +1,7 @@
 Thes::Application.routes.draw do
   root 'homes#show'
 
-  resources 'talents', only: [:show, :edit, :create, :update]
+  resources 'talents', only: [:show, :create]
 
   resources 'companies', only: [:show, :create]
 

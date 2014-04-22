@@ -2,37 +2,49 @@
   @include span-columns(12);
   padding-top: 30px;
   .company-logo {
-   @include span-columns(4);
-   img {
-     width: 150px;
-     height: 150px;
-     border-radius: 150px;
-     border: 1px solid black;
-     background-color: red;
-     display: block;
-     margin: 0 auto;
-   }
+    @include span-columns(4);
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 150px;
+      border: 1px solid black;
+      background-color: red;
+      display: block;
+      margin: 0 auto;
+    }
   }
- }
+
   .company-basic-info {
     @include span-columns(4);
+    list-style: none;
     color: black;
     h1 {
       color: $medium-blue;
     }
+  }
 
-    .company-contact-info {
-      @include span-columns(4);
-      padding-top: 28px;
-      .contact-link {
-        color: $thes-blue;
-        text-decoration: none;
-        &:hover {
-          color: $medium-blue;
-        }
+  .company-contact-info {
+    @include span-columns(4);
+    padding-top: 30px;
+    max-width: 200px;
+    list-style: none;
+    h3 {
+      color: $medium-blue;
+    }
+    li {
+      list-style: none;
+      margin: 10px;
+      font-weight: bold;
+    }
+    .contact-link {
+      color: $thes-blue;
+      text-decoration: none;
+      &:hover {
+        color: $medium-blue;
       }
     }
   }
+}
 
 .company-attributes {
   @include span-columns(12);

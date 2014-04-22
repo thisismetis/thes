@@ -9,13 +9,6 @@ class TalentsController < ApplicationController
     @profile = @talent.profile
   end
 
-  def edit
-    @talent = Talent.find(params[:id])
-    @profile = @talent.profile
-  end
-
-  def update
-  end
   private
 
   def new_talent(client)
