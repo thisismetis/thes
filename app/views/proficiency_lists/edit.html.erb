@@ -2,9 +2,9 @@
 <h2>Any proficiency not assigned a level will not be used in searches</h2>
 <%= form_for @talent, url: talent_proficiency_list_path(@talent), method: :patch do |form| %>
   <%= flash[:proficiencies_error] %>
-  <%= form.fields_for :profile, @talent.profile do |p_fields| %>
+  <%= form.fields_for :profile, @talent.profile do |profile_fields| %>
     <% @proficiencies.each do |proficiency| %>
-      <%= p_fields.fields_for :proficiencies, proficiency do |pr_fields| %>
+      <%= p_fields.fields_for :proficiencies, proficiency do |proficiency_fields| %>
         <div>
           <%= "#{proficiency.skill.name}:" %>
           <%= pr_fields.label(:level, "Beginner") %>
