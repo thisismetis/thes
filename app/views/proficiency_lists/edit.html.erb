@@ -1,0 +1,21 @@
+<h1>Edit Proficiency Levels</h1>
+<h2>Any proficiency not assigned a level will not be used in searches</h2>
+<%= form_for @talent, url: talent_proficiency_list_path(@talent), method: :patch do |form| %>
+  <%= flash[:proficiencies_error] %>
+  <%= form.fields_for :profile, @talent.profile do |profile_fields| %>
+    <% @proficiencies.each do |proficiency| %>
+      <%= p_fields.fields_for :proficiencies, proficiency do |proficiency_fields| %>
+        <div>
+          <%= "#{proficiency.skill.name}:" %>
+          <%= pr_fields.label(:level, "Beginner") %>
+          <%= pr_fields.radio_button(:level, 1) %>
+          <%= pr_fields.label(:level, "Intermediate") %>
+          <%= pr_fields.radio_button(:level, 2) %>
+          <%= pr_fields.label(:level, "Advanced") %>
+          <%= pr_fields.radio_button(:level, 3) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= form.submit "Submit" %>
+<% end %>
