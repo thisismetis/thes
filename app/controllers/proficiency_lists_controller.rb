@@ -1,4 +1,5 @@
-class ProficienciesController < ApplicationController
+class ProficiencyListsController < ApplicationController
+  respond_to :html
 
   def edit
     @talent = find_talent
@@ -7,12 +8,8 @@ class ProficienciesController < ApplicationController
 
   def update
     talent = find_talent
-    if talent.update(proficiencies_params)
-      redirect_to talent
-    else
-      flash[:proficiencies_error] = "You must fill out a level for every skill."
-      redirect_to edit_talent_proficiencies_path(talent)
-    end
+    talent.update(proficiencies_params)
+    respond_with talent
   end
 
   private
