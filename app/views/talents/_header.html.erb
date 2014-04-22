@@ -1,5 +1,5 @@
 <div class="talent-picture">
-  <%= image_tag @profile.picture_url %>
+  <%= image_tag @profile.picture_url, alt:"#{@profile.first_name} #{@profile.last_name}" %>
 </div>
 <div class="talent-basic-info">
   <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
