@@ -1,7 +1,7 @@
-.talent-header {
+.company-header {
   @include span-columns(12);
-  padding-top: 50px;
-  .talent-picture {
+  padding-top: 30px;
+  .company-logo {
     @include span-columns(4);
     img {
       width: 150px;
@@ -13,18 +13,29 @@
       margin: 0 auto;
     }
   }
-  .talent-basic-info {
-    @include span-columns(4);
-    color: $thes-blue;
 
+  .company-basic-info {
+    @include span-columns(4);
+    list-style: none;
+    color: black;
     h1 {
       color: $medium-blue;
     }
-
   }
-  .talent-contact-info {
+
+  .company-contact-info {
     @include span-columns(4);
-    padding-top: 28px;
+    padding-top: 30px;
+    max-width: 200px;
+    list-style: none;
+    h3 {
+      color: $medium-blue;
+    }
+    li {
+      list-style: none;
+      margin: 10px;
+      font-weight: bold;
+    }
     .contact-link {
       color: $thes-blue;
       text-decoration: none;
@@ -35,7 +46,7 @@
   }
 }
 
-.talent-attributes {
+.company-attributes {
   @include span-columns(12);
   margin-top: 30px;
   border-top: 1px solid $thes-blue;
@@ -51,26 +62,10 @@
     font-weight: bold;
   }
 
-  .talent-skills {
-    @include span-columns(6);
-    .skill-button {
-      border: 1px solid black;
-      border-radius: 10px;
-      text-align: center;
-      max-width: 200px;
-      margin: 10px 10px;
-      padding: 5px 5px;
-      float: left;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-  }
-  .talent-desires {
+  .company-desires {
     @include span-columns(6);
     .desire-button {
-        float: right;
-      text-align: center;
+      float: right;
       max-width: 300px;
       margin: 10px 10px;
       padding: 5px 5px;
@@ -82,14 +77,3 @@
   }
 }
 
-.cover-letter {
-  @include span-columns(12);
-  margin-top: 30px;
-  border-top: 1px solid $thes-blue;
-}
-
-.resume {
-  @include span-columns(12);
-  margin-top: 30px;
-  border-top: 1px solid $thes-blue;
-}
