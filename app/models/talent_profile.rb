@@ -5,4 +5,8 @@ class TalentProfile < ActiveRecord::Base
 
   accepts_nested_attributes_for :proficiencies
   validates_associated :proficiencies
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

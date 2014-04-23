@@ -1,0 +1,9 @@
+<p>
+  Search Results:
+</p>
+
+<% @profiles.each do |profile| %>
+  <div class="search-results">
+    <%= link_to profile.name, profile.talent  %>
+  </div>
+<% end %>
