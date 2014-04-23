@@ -1,4 +1,9 @@
 <%= form_for :search, method: :get, url: search_path do |form| %>
   <%= form.text_field :query %>
+  <div class="level-selectors">
+    <%= form.radio_button :level, 1 %> Beginner
+    <%= form.radio_button :level, 2 %> Intermediate
+    <%= form.radio_button :level, 3 %> Advanced
+  </div>
   <%= form.submit "Search for a Talent" %>
 <% end %>

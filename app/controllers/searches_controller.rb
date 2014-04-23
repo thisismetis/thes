@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   end
 
   def show
-    @profiles = find_profiles.includes(:talent)
+    @profiles = find_profiles
   end
 
   private
