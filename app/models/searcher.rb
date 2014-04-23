@@ -4,12 +4,16 @@ class Searcher
   end
 
   def profiles
-    skills.map(&:talent_profiles).flatten.uniq
+    TalentProfile.where(id: talent_profile_ids)
   end
 
   private
 
+  def talent_profile_ids
+    skills.map(&:talent_profile_ids).flatten.uniq
+  end
+
   def skills
-    Skill.where("name ILIKE :query", query: "%#{@query}%")
+    Skill.includes(:talent_profiles).where("name ILIKE :query", query: "%#{@query}%")
   end
 end
