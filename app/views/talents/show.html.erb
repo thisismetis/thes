@@ -3,7 +3,14 @@
 </div>
 
 <div class="talent-attributes">
-  <%= render "skill" %>
+  <div class="talent-skills">
+    <h2>Skills </h2>
+    <%= link_to "Edit Skill Levels",
+      edit_talent_proficiency_list_path(@talent) %>
+    <ul>
+      <%= render @profile.proficiencies %>
+    </ul>
+  </div>
   <%= render "desire" %>
 </div>
 
