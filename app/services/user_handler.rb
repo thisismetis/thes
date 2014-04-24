@@ -1,28 +1,21 @@
 class UserHandler
 
-  def initialize(client)
-    @atoken = client.atoken
-    @asecret = client.asecret
+  def initialize(oauth)
+    @oauth = oauth
   end
 
   def run(user, data)
     parse_data data
     user.email = email
-    user.oauth = make_oauth
+    user.oauth = oauth
     user
   end
 
   private
 
-  attr_reader :email, :atoken, :asecret
+  attr_reader :email, :oauth
 
   def parse_data(data)
     @email = data["email_address"]
-  end
-
-  def make_oauth
-    LinkedinOauthSetting.new(
-      atoken: atoken,
-      asecret: asecret)
   end
 end

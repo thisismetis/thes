@@ -1,7 +1,8 @@
 class TalentSignupHandler
   TALENT = "Talent"
 
-  def initialize(client)
+  def initialize(client, oauth)
+    @oauth = oauth
     @client = client
     @gatherer = TalentDataGatherer.new client
     @processes = []
@@ -17,7 +18,7 @@ class TalentSignupHandler
 
   private
 
-  attr_reader :client, :gatherer, :processes
+  attr_reader :client, :oauth, :gatherer, :processes
 
   def process_talent(talent, data)
     processes.inject(talent) do |talent, process|
@@ -32,7 +33,7 @@ class TalentSignupHandler
   end
 
   def add_processes
-    processes << UserHandler.new(client)
+    processes << UserHandler.new(oauth)
     processes << TalentProfileGenerator.new
     processes << SkillsHandler.new
   end

@@ -7,8 +7,6 @@ class LinkedInWrapper
     access_token_path: "/uas/oauth/accessToken"
   }
 
-  attr_reader :atoken, :asecret
-
   def initialize
     @client = ThesLinkedInClient.new(
       ENV['LINKEDIN_KEY'],
@@ -17,12 +15,15 @@ class LinkedInWrapper
   end
 
   def request_token(request)
-    callback_url = oauth_callback_url request
+    callback_url = oauth_callback_url(request)
     client.request_token(oauth_callback: callback_url)
   end
 
-  def authorize(rtoken, rsecret, pin)
-    @atoken, @asecret = client.authorize_from_request(rtoken, rsecret, pin)
+  def authorize_from_request(rtoken, rsecret, pin)
+    client.authorize_from_request(rtoken, rsecret, pin)
+  end
+
+  def authorize_from_access(atoken, asecret)
     client.authorize_from_access(atoken, asecret)
     self
   end
@@ -49,6 +50,6 @@ class LinkedInWrapper
   attr_reader :client
 
   def oauth_callback_url(request)
-    "http://#{request.host}:#{request.port}/users/new"
+    "http://#{request.host}:#{request.port}/oauth_return"
   end
 end

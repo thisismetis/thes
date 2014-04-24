@@ -13,7 +13,7 @@ class TalentsController < ApplicationController
   private
 
   def new_talent(client)
-    handler = TalentSignupHandler.new client
+    handler = TalentSignupHandler.new(client, oauth)
     handler.process
   end
 end
