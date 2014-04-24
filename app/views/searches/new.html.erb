@@ -1,9 +1,26 @@
-<%= form_for :search, method: :get, url: search_path do |form| %>
-  <%= form.text_field :query %>
-  <div class="level-selectors">
-    <%= form.radio_button :level, 1 %> Beginner
-    <%= form.radio_button :level, 2 %> Intermediate
-    <%= form.radio_button :level, 3 %> Advanced
-  </div>
+<%= form_for :search, method: :get, url: search_path, html: { id: "search-form" } do |form| %>
+  <div id="search-form-inputs"></div>
+  <%= content_for :search_form_inputs do %>
+    <script>
+      function addInputs() {
+        var textInputs = $('form#search-form').find('div.search-form-inputs');
+        var numInputs = textInputs.length;
+        var template = "<%= j render partial: 'form_inputs', locals: { form: form } %>";
+        var queryName = "[query][" + numInputs + "]";
+        var levelName = "[level][" + numInputs + "]";
+        template = template.replace(/\[query\]/g, queryName);
+        template = template.replace(/\[level\]/g, levelName);
+        $('#search-form-inputs').append(template);
+      }
+      $(document).ready(function() {
+          addInputs();
+          $(".add_fields").click(function() {
+            addInputs();
+          });
+      });
+    </script>
+  <% end %>
+  <%= link_to "Add Another Skill", :search, remote: true, class: 'add_fields' %>
+  <%= content_for :search_form_inputs %>
   <%= form.submit "Search for a Talent" %>
 <% end %>

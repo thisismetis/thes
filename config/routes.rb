@@ -9,6 +9,7 @@ Thes::Application.routes.draw do
   resource 'linkedin', only: [:create]
 
   resource 'search', only: [:show, :new]
+  resource 'search_form_inputs', only: [:show]
 
   get 'oauth_return' => 'oauth_sessions#create'
   resource 'guest', only: [:show]
