@@ -2,7 +2,7 @@ class OauthSessionsController < ApplicationController
   def create
     oauth = oauth_session.oauth_creds
     make_session_cookies(oauth)
-    redirect_to path_to_redirect_to(oauth.user)
+    redirect_to path_for_user(oauth.user)
   end
 
   private
