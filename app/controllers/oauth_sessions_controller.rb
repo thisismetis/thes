@@ -16,7 +16,7 @@ class OauthSessionsController < ApplicationController
     cookies.permanent.signed[:asecret] = oauth.asecret
   end
 
-  def path_to_redirect_to(user)
+  def path_for_user(user)
     if user.persisted?
       user
     else

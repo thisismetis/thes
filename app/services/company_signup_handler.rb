@@ -1,7 +1,8 @@
 class CompanySignupHandler
   COMPANY = "Company"
 
-  def initialize(client)
+  def initialize(client, oauth)
+    @oauth = oauth
     @client = client
     @gatherer = CompanyDataGatherer.new client
     @processes = []
@@ -17,7 +18,7 @@ class CompanySignupHandler
 
   private
 
-  attr_reader :client, :gatherer, :processes
+  attr_reader :client, :gatherer, :processes, :oauth
 
   def process_company(company, data)
     processes.inject(company) do |company, process|
@@ -33,7 +34,7 @@ class CompanySignupHandler
   end
 
   def add_processes
-    processes << UserHandler.new(client)
+    processes << UserHandler.new(oauth)
     processes << CompanyProfileGenerator.new
     processes << IndustriesHandler.new
     processes << LocationsHandler.new

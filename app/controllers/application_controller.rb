@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   def linkedin
     LinkedInWrapper.new
   end
-  
+
   def oauth
     @oauth ||= LinkedinOauthSetting.find_by(
       atoken: atoken,
