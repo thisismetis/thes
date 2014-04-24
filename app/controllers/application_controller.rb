@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def current_user
+    @user ||= oauth.user
+  end
+
+  def signed_in?
+    !current_user.nil?
+  end
+
   def get_linkedin_request_token
     linkedin.request_token request
   end
