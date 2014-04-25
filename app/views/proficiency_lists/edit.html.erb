@@ -11,12 +11,18 @@
               <p><%= "#{proficiency.skill.name}:" %></p>
             </div>
             <div class="skill-input-levels">
-              <%= proficiency_fields.label(:level, "Beginner") %>
-              <%= proficiency_fields.radio_button(:level, 1) %>
-              <%= proficiency_fields.label(:level, "Intermediate") %>
-              <%= proficiency_fields.radio_button(:level, 2) %>
-              <%= proficiency_fields.label(:level, "Advanced") %>
-              <%= proficiency_fields.radio_button(:level, 3) %>
+              <div class="skill-input-level">
+                <%= proficiency_fields.label(:level, "Beginner") %>
+                <%= proficiency_fields.radio_button(:level, 1) %>
+              </div>
+              <div class="skill-input-level">
+                <%= proficiency_fields.label(:level, "Intermediate") %>
+                <%= proficiency_fields.radio_button(:level, 2) %>
+              </div>
+              <div class="skill-input-level">
+                <%= proficiency_fields.label(:level, "Advanced") %>
+                <%= proficiency_fields.radio_button(:level, 3) %>
+              </div>
             </div>
           </div>
         <% end %>
