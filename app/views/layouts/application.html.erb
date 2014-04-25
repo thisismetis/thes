@@ -14,7 +14,11 @@
     <header>
       <a href="#" class="header-name">Thes</a>
       <nav>
-        <%= button_to "Sign In with LinkedIn", linkedin_path %>
+        <% if signed_in? %>
+          <%= button_to "Sign Out", oauth_session_path, method: :delete %>
+        <% else %>
+          <%= button_to "Sign In with LinkedIn", linkedin_path %>
+        <% end %>
       </nav>
     </header>
     <%= yield %>

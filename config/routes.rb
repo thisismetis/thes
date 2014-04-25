@@ -12,5 +12,6 @@ Thes::Application.routes.draw do
   resource 'search_form_inputs', only: [:show]
 
   get 'oauth_return' => 'oauth_sessions#create'
+  resource 'oauth_session', only: [:destroy]
   resource 'guest', only: [:show]
 end

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   def signed_in?
     current_user.class < User
   end
+  helper_method :signed_in?
 
   def get_linkedin_request_token
     linkedin.request_token request
