@@ -4,3 +4,47 @@
     font-weight: 400;
     src: local('Clear Sans'),url(//brick.a.ssl.fastly.net/fonts/clearsans/400.woff) format('woff');
 }
+
+@mixin link-button {
+  list-style: none;
+  background: $thes-blue;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  color: $thes-gray;
+  font-size: 20px;
+  border: 0;
+
+  &:hover {
+    background-color: $medium-blue;
+    cursor: pointer;
+  }
+}
+
+@mixin link {
+  font-size: 20px;
+  color: $thes-blue;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    color: $medium-blue;
+  }
+}
+
+@mixin button {
+  background: $thes-blue;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  color: $thes-gray;
+  font-size: 16px;
+  border: 0;
+
+  &:hover {
+    background-color: $medium-blue;
+    cursor: pointer;
+  }
+}

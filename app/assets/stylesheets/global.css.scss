@@ -2,6 +2,11 @@ html, body {
   background-color: $thes-gray;
   @include clear-sans();
 }
+
+a {
+  @include link;
+}
+
 .outer-container {
   @include outer-container;
 }
