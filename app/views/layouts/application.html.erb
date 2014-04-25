@@ -12,7 +12,7 @@
 <body>
   <div class="outer-container">
     <header>
-      <a href="#" class="header-name">Thes</a>
+      <%= link_to "Thes", root_path, class: "header-name" %>
       <nav>
         <% if signed_in? %>
           <%= button_to "Sign Out", oauth_session_path, method: :delete %>
