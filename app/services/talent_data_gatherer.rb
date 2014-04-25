@@ -21,7 +21,7 @@ class TalentDataGatherer
       :industry,
       :summary,
       :skills,
-      :id
+      "site-standard-profile-request"
     ]
   end
 end

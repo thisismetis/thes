@@ -13,7 +13,7 @@ class TalentProfileGenerator
       profile.last_name = data["last_name"]
       profile.industry = data["industry"]
       profile.summary  = data["summary"]
-      profile.linkedin_id = data["id"]
+      profile.linkedin_url = data["site_standard_profile_request"]["url"]
       profile.picture_url = data["picture_url"]
     end
   end
