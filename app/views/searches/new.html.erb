@@ -1,26 +1,34 @@
-<%= form_for :search, method: :get, url: search_path, html: { id: "search-form" } do |form| %>
-  <div id="search-form-inputs"></div>
-  <%= content_for :search_form_inputs do %>
-    <script>
-      function addInputs() {
-        var textInputs = $('form#search-form').find('div.search-form-inputs');
-        var numInputs = textInputs.length;
-        var template = "<%= j render partial: 'form_inputs', locals: { form: form } %>";
-        var queryName = "[query][" + numInputs + "]";
-        var levelName = "[level][" + numInputs + "]";
-        template = template.replace(/\[query\]/g, queryName);
-        template = template.replace(/\[level\]/g, levelName);
-        $('#search-form-inputs').append(template);
-      }
-      $(document).ready(function() {
-          addInputs();
-          $(".add_fields").click(function() {
+<div class="new-search">
+  <h1>Search for Talent</h1>
+  <p>Enter a skill name and skill level to search on.  Only Talent matched exactly with each of the entered skills and levels will be returned in the search results.</p>
+
+  <%= form_for :search, method: :get, url: search_path, html: { id: "search-form" } do |form| %>
+    <div id="search-form-inputs"></div>
+    <%= content_for :search_form_inputs do %>
+      <script>
+        function addInputs() {
+          var textInputs = $('form#search-form').find('div.search-form-inputs');
+          var numInputs = textInputs.length;
+          var template = "<%= j render partial: 'form_inputs', locals: { form: form } %>";
+          var queryName = "[query][" + numInputs + "]";
+          var levelName = "[level][" + numInputs + "]";
+          template = template.replace(/\[query\]/g, queryName);
+          template = template.replace(/\[level\]/g, levelName);
+          $('#search-form-inputs').append(template);
+        }
+        $(document).ready(function() {
             addInputs();
-          });
-      });
-    </script>
+            $(".add_fields").click(function() {
+              addInputs();
+            });
+        });
+      </script>
+    <% end %>
+    <p>
+      <%= link_to "Add Another Skill",
+        :search, remote: true, class: 'add_fields' %>
+    </p>
+    <%= content_for :search_form_inputs %>
+    <%= form.submit "Search for a Talent" %>
   <% end %>
-  <%= link_to "Add Another Skill", :search, remote: true, class: 'add_fields' %>
-  <%= content_for :search_form_inputs %>
-  <%= form.submit "Search for a Talent" %>
-<% end %>
+</div>

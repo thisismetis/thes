@@ -1,8 +1,14 @@
 <div class="search-form-inputs">
-  <%= form.text_field :query %>
+  <%= form.text_field :query, placeholder: "Skill Name" %>
   <div class="level-selectors">
-    <%= form.radio_button :level, 1 %> Beginner
-    <%= form.radio_button :level, 2 %> Intermediate
-    <%= form.radio_button :level, 3 %> Advanced
+    <div class="level-input">
+      <%= form.radio_button :level, 1 %> Beginner
+    </div>
+    <div class="level-input">
+      <%= form.radio_button :level, 2 %> Intermediate
+    </div>
+    <div class="level-input">
+      <%= form.radio_button :level, 3 %> Advanced
+    </div>
   </div>
 </div>

@@ -1,0 +1,30 @@
+.new-search {
+  text-align: center;
+  width: 700px;
+  margin: 0 auto;
+
+  h1 {
+    color: $thes-blue;
+  }
+
+  p {
+    color: $steel-gray;
+  }
+
+  input[type=text] {
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid $soft-gray;
+    padding: 5px;
+  }
+
+  .level-input {
+    display: inline-block;
+    margin: 10px 20px;
+    color: $steel-gray;
+  }
+
+  input[type=submit] {
+    @include button;
+  }
+}
