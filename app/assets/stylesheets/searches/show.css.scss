@@ -1,0 +1,27 @@
+.search-results {
+  text-align: center;
+  margin-top: 80px;
+
+  h1 {
+    color: $thes-blue;
+  }
+
+  .search-name {
+    color: $medium-blue;
+    margin: 0 10px;
+
+    &:hover {
+      color: $thes-blue;
+    }
+  }
+
+  ol {
+    list-style-position:inside;
+    padding: 0;
+    li {
+      list-style-type: decimal;
+      color: $steel-gray;
+      font-size: 20px;
+    }
+  }
+}

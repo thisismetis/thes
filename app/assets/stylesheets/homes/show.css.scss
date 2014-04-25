@@ -2,77 +2,40 @@
   @include span-columns(12);
   padding: 40px 0;
   border-bottom: 1px solid $thes-blue;
+  text-align: center;
 
-  .sign-up-container {
-    @include span-columns(6);
-    border-right: 1px solid $thes-blue;
-    h2 {
-      color: $thes-blue;
-      font-size: 36px;
-      text-align: center;
-    }
-
-    form.talent-sign-up{
-
-      div {
-        text-align: center;
-      }
-
-      input[type=text], input[type=password], input[type=email] {
-        font-size: 20px;
-        margin: 16px 0;
-      }
-
-      button, input[type=submit] {
-        padding: 4px 10px;
-        font-size: 20px;
-        background-color: $thes-blue;
-        border: 0;
-        border-radius: 5px;
-        color: $thes-gray;
-
-        &:hover {
-          cursor: pointer;
-          background-color: $medium-blue;
-        }
-      }
-    }
+  h1 {
+    color: $medium-blue;
+    font-size: 100px;
+    margin: 40px 0;
   }
 
-  .landing-nav {
-    @include span-columns(6);
-    ul {
-      li {
-        list-style: none;
-        margin: 50px;
-        background: $thes-blue;
-        text-align: center;
-        border-radius: 10px;
-        padding: 5px 0;
-
-        &:hover {
-          background-color: $medium-blue;
-        }
-
-        a {
-          text-decoration: none;
-          color: $thes-gray;
-          font-size: 30px;
-          padding: 0 10px;
-        }
-      }
-      li.active {
-        background-color: $medium-blue;
-      }
-    }
-  }
-}
-.about {
-  @include span-columns(12);
-  border-bottom: 1px solid $thes-blue;
   h2 {
     color: $thes-blue;
-    font-size: 26px;
+    font-size: 50px;
+  }
+
+  p {
+    color: $steel-gray;
+  }
+
+  p.about {
+    font-style: italic;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .auth-buttons {
+    color: $medium-blue;
+    font-size: 40px;
+    font-weight: bold;
+
+    form {
+      display: inline-block;
+
+      button, input[type=submit] {
+        @include big-button;
+      }
+    }
   }
 }
-

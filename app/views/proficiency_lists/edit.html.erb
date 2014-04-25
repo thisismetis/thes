@@ -1,21 +1,27 @@
-<h1>Edit Proficiency Levels</h1>
-<h2>Any proficiency not assigned a level will not be used in searches</h2>
-<%= form_for @talent, url: proficiency_list_path, method: :patch do |form| %>
-  <%= flash[:proficiencies_error] %>
-  <%= form.fields_for :profile, @talent.profile do |profile_fields| %>
-    <% @proficiencies.each do |proficiency| %>
-      <%= profile_fields.fields_for :proficiencies, proficiency do |proficiency_fields| %>
-        <div>
-          <%= "#{proficiency.skill.name}:" %>
-          <%= proficiency_fields.label(:level, "Beginner") %>
-          <%= proficiency_fields.radio_button(:level, 1) %>
-          <%= proficiency_fields.label(:level, "Intermediate") %>
-          <%= proficiency_fields.radio_button(:level, 2) %>
-          <%= proficiency_fields.label(:level, "Advanced") %>
-          <%= proficiency_fields.radio_button(:level, 3) %>
-        </div>
+<div class="edit-proficiency-levels">
+  <h1>Edit Proficiency Levels</h1>
+  <h2>Any proficiency not assigned a level will not be used in searches</h2>
+  <%= form_for @talent, url: proficiency_list_path, method: :patch do |form| %>
+    <%= flash[:proficiencies_error] %>
+    <%= form.fields_for :profile, @talent.profile do |profile_fields| %>
+      <% @proficiencies.each do |proficiency| %>
+        <%= profile_fields.fields_for :proficiencies, proficiency do |proficiency_fields| %>
+          <div class="skill-input">
+            <div class="skill-input-name">
+              <p><%= "#{proficiency.skill.name}:" %></p>
+            </div>
+            <div class="skill-input-levels">
+              <%= proficiency_fields.label(:level, "Beginner") %>
+              <%= proficiency_fields.radio_button(:level, 1) %>
+              <%= proficiency_fields.label(:level, "Intermediate") %>
+              <%= proficiency_fields.radio_button(:level, 2) %>
+              <%= proficiency_fields.label(:level, "Advanced") %>
+              <%= proficiency_fields.radio_button(:level, 3) %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
+    <%= form.submit "Submit" %>
   <% end %>
-  <%= form.submit "Submit" %>
-<% end %>
+</div>

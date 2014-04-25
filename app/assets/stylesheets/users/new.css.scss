@@ -1,0 +1,11 @@
+.new-user-buttons {
+  text-align: center;
+  margin-top: 10%;
+  color: $medium-blue;
+  font-size: 40px;
+  font-weight: bold;
+
+  button, input[type=submit] {
+    @include big-button;
+  }
+}

@@ -8,28 +8,25 @@
       height: 150px;
       border-radius: 150px;
       border: 1px solid black;
-      background-color: red;
       display: block;
       margin: 0 auto;
     }
   }
-  .talent-basic-info {
-    @include span-columns(4);
-    color: $thes-blue;
-
-    h1 {
-      color: $medium-blue;
-    }
-
-  }
-  .talent-contact-info {
-    @include span-columns(4);
-    padding-top: 28px;
-    .contact-link {
-      color: $thes-blue;
-      text-decoration: none;
-      &:hover {
+  .talent-info {
+    @include span-columns(8);
+    .talent-name{
+      display: inline-block;
+      h1 {
         color: $medium-blue;
+      }
+    }
+    .talent-linkedin {
+      display: inline-block;
+      text-align: center;
+      width: 500px;
+      a {
+        @include link-button;
+        margin: 0 auto;
       }
     }
   }
@@ -52,9 +49,10 @@
   }
 
   .talent-skills {
-    @include span-columns(6);
+    @include span-columns(12);
     .skill-button {
-      border: 1px solid black;
+      border: 1px solid $steel-gray;
+      color: $steel-gray;
       border-radius: 10px;
       text-align: center;
       max-width: 200px;
@@ -65,31 +63,14 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
-  }
-  .talent-desires {
-    @include span-columns(6);
-    .desire-button {
-      float: right;
-      text-align: center;
-      max-width: 300px;
-      margin: 10px 10px;
-      padding: 5px 5px;
-      float: left;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+    .beginner {
+      background-color: $beginner;
+    }
+    .intermediate {
+      background-color: $intermediate;
+    }
+    .advanced {
+      background-color: $advanced;
     }
   }
-}
-
-.cover-letter {
-  @include span-columns(12);
-  margin-top: 30px;
-  border-top: 1px solid $thes-blue;
-}
-
-.resume {
-  @include span-columns(12);
-  margin-top: 30px;
-  border-top: 1px solid $thes-blue;
 }

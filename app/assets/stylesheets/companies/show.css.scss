@@ -8,71 +8,17 @@
       height: 150px;
       border-radius: 150px;
       border: 1px solid black;
-      background-color: red;
       display: block;
       margin: 0 auto;
     }
   }
 
   .company-basic-info {
-    @include span-columns(4);
+    @include span-columns(8);
     list-style: none;
     color: black;
     h1 {
       color: $medium-blue;
-    }
-  }
-
-  .company-contact-info {
-    @include span-columns(4);
-    padding-top: 30px;
-    max-width: 200px;
-    list-style: none;
-    h3 {
-      color: $medium-blue;
-    }
-    li {
-      list-style: none;
-      margin: 10px;
-      font-weight: bold;
-    }
-    .contact-link {
-      color: $thes-blue;
-      text-decoration: none;
-      &:hover {
-        color: $medium-blue;
-      }
-    }
-  }
-}
-
-.company-attributes {
-  @include span-columns(12);
-  margin-top: 30px;
-  border-top: 1px solid $thes-blue;
-  h2 {
-    text-align: center;
-    font-size: 30px;
-    color: $medium-blue;
-  }
-
-  li {
-    list-style: none;
-    margin: 10px;
-    font-weight: bold;
-  }
-
-  .company-desires {
-    @include span-columns(6);
-    .desire-button {
-      float: right;
-      max-width: 300px;
-      margin: 10px 10px;
-      padding: 5px 5px;
-      float: left;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
     }
   }
 }

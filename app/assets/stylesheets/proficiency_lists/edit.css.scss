@@ -1,0 +1,22 @@
+.edit-proficiency-levels {
+  color: $steel-gray;
+  text-align: center;
+
+  form {
+    width: 500px;
+    margin: 0 auto;
+
+    .skill-input-name {
+      text-align: left;
+      p {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+
+    button, input[type=submit] {
+      margin: 20px 0;
+      @include button;
+    }
+  }
+}

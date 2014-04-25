@@ -8,16 +8,27 @@ header {
     font-size: 36px;
     float: left;
   }
+
+  a.search-link {
+    float: right;
+    margin: 0 20px;
+    background: $soft-gray;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    color: $medium-blue;
+
+    &:hover {
+      color: $thes-blue;
+    }
+  }
+
   form {
     float: right;
 
-    input[type=text], input[type=password], input[type=email] {
-      font-size: 16px;
-      margin-top: 14px;
-    }
-
     button, input[type=submit] {
-      padding: 4px 10px;
+      margin: 6px 20px 0 10px;
+      padding: 8px 10px;
       font-size: 16px;
       background-color: $thes-blue;
       border: 0;

@@ -1,5 +1,6 @@
 <div class="talent-header">
-  <%= render "header" %>
+  <%= render partial: "header",
+    locals: { talent: @talent, profile: @profile } %>
 </div>
 
 <div class="talent-attributes">
@@ -11,9 +12,4 @@
       <%= render @profile.proficiencies %>
     </ul>
   </div>
-  <%= render "desire" %>
 </div>
-
-<%= render "cover_letter" %>
-
-<%= render "resume" %>

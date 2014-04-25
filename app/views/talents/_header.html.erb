@@ -1,20 +1,16 @@
 <div class="talent-picture">
-  <%= image_tag @profile.picture_url, alt:"#{@profile.first_name} #{@profile.last_name}" %>
+  <%= image_tag profile.picture_url, alt:"#{profile.first_name} #{profile.last_name}" %>
 </div>
-<div class="talent-basic-info">
-  <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
-  <p>
-    <%= @profile.industry %>
-  </p>
-  <p>
-    <%= link_to "Visit my LinkedIn Profile", @talent.linkedin_url %>
-  </p>
-</div>
-<div class="talent-contact-info">
-  <p>
-    <%= link_to @talent.email %>
-  </p>
-  <p>
-    <%= @profile.summary %>
-  </p>
+<div class="talent-info">
+  <div class="talent-name">
+    <h1><%= profile.first_name %> <%= profile.last_name %></h1>
+  </div>
+  <div class="talent-linkedin">
+    <%= link_to "Visit me on LinkedIn!", talent.linkedin_url %>
+  </div>
+  <div class="talent-summary">
+    <p>
+      <%= profile.summary %>
+    </p>
+  </div>
 </div>

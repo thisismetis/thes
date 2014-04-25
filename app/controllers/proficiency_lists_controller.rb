@@ -9,14 +9,10 @@ class ProficiencyListsController < ApplicationController
 
   def update
     current_user.update(proficiencies_params)
-    respond_with talent
+    respond_with current_user
   end
 
   private
-
-  def find_talent
-    Talent.find(params[:talent_id])
-  end
 
   def proficiencies_params
     params.require(:talent).permit(

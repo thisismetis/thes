@@ -15,6 +15,7 @@ class Searcher
   def talent_profile_ids
     ids = proficiencies.map(&:talent_profile_id)
     ids.select { |id| ids.count(id) == skill_names.count }
+    ids.uniq
   end
 
   def proficiencies
@@ -28,7 +29,7 @@ class Searcher
   def wheres
     wheres = []
     skill_names.each do |index, skill_name|
-      unless skill_name.empty?
+      unless skill_name.empty? || levels[index].nil?
         wheres << build_where(skill_name, levels[index])
       end
     end
