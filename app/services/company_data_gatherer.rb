@@ -18,7 +18,6 @@ class CompanyDataGatherer
 
   def fields
     [
-      :id,
       :name,
       "logo-url",
       "employee-count-range",

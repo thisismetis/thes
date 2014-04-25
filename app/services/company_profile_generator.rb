@@ -9,7 +9,6 @@ class CompanyProfileGenerator
 
   def build_profile(data)
     CompanyProfile.new.tap do |profile|
-      profile.linkedin_id = data["id"]
       profile.name = data["name"]
       profile.logo_url = data["logo_url"]
       profile.description = data["description"]
