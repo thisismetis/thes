@@ -15,6 +15,7 @@ class Searcher
   def talent_profile_ids
     ids = proficiencies.map(&:talent_profile_id)
     ids.select { |id| ids.count(id) == skill_names.count }
+    ids.uniq!
   end
 
   def proficiencies
