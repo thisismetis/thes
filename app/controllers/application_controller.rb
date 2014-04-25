@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
   def company?
     current_user.type == "Company"
   end
+  helper_method :company?
 
   def talent?
     current_user.type == "Talent"

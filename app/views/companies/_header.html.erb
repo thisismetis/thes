@@ -7,17 +7,3 @@
     <%= @profile.description %>
   </p>
 </div>
-<div class="company-contact-info">
-  <p>
-  <h3>Contact Info</h3>
-    <ul>
-      <li><%= @company.email %></li>
-      <li>phone number</li>
-      <li>
-        <% @profile.locations.each do |location| %>
-           Zip Code: <%= location.postal_code %>
-        <% end %>
-      </li>
-    </ul>
-  </p>
-</div>

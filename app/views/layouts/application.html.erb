@@ -19,6 +19,10 @@
         <% else %>
           <%= button_to "Sign In with LinkedIn", linkedin_path %>
         <% end %>
+        <% if company? %>
+          <%= link_to "Search for Talent",
+            new_search_path, class: "search-link" %>
+        <% end %>
       </nav>
     </header>
     <%= yield %>
