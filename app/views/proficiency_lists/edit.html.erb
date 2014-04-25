@@ -1,6 +1,6 @@
 <h1>Edit Proficiency Levels</h1>
 <h2>Any proficiency not assigned a level will not be used in searches</h2>
-<%= form_for @talent, url: talent_proficiency_list_path(@talent), method: :patch do |form| %>
+<%= form_for @talent, url: proficiency_list_path, method: :patch do |form| %>
   <%= flash[:proficiencies_error] %>
   <%= form.fields_for :profile, @talent.profile do |profile_fields| %>
     <% @proficiencies.each do |proficiency| %>

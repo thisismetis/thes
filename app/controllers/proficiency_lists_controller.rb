@@ -1,14 +1,14 @@
 class ProficiencyListsController < ApplicationController
+  before_action :not_found, unless: :talent?
   respond_to :html
 
   def edit
-    @talent = find_talent
+    @talent = current_user
     @proficiencies = @talent.profile.proficiencies
   end
 
   def update
-    talent = find_talent
-    talent.update(proficiencies_params)
+    current_user.update(proficiencies_params)
     respond_with talent
   end
 

@@ -55,6 +55,10 @@ class ApplicationController < ActionController::Base
   end
 
   def company?
-    current_user.class == "Company"
+    current_user.type == "Company"
+  end
+
+  def talent?
+    current_user.type == "Talent"
   end
 end
