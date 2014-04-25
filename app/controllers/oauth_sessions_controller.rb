@@ -5,6 +5,12 @@ class OauthSessionsController < ApplicationController
     redirect_to path_for_user(oauth.user)
   end
 
+  def destroy
+    cookies.delete(:atoken)
+    cookies.delete(:asecret)
+    redirect_to root_path
+  end
+
   private
 
   def oauth_session
