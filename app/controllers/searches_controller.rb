@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  before_action :not_found, unless: :company?
+
   def new
   end
 

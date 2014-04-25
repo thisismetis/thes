@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def current_user
+    @user ||= oauth.user
+  end
+
+  def signed_in?
+    current_user.class < User
+  end
+
   def get_linkedin_request_token
     linkedin.request_token request
   end
@@ -25,9 +33,13 @@ class ApplicationController < ActionController::Base
   end
 
   def oauth
-    @oauth ||= LinkedinOauthSetting.find_by(
+    @oauth ||= linkedin_oauth_setting
+  end
+
+  def linkedin_oauth_setting
+    LinkedinOauthSetting.find_by(
       atoken: atoken,
-      asecret: asecret)
+      asecret: asecret) || NullLinkedinOauthSetting.new
   end
 
   def atoken
@@ -36,5 +48,17 @@ class ApplicationController < ActionController::Base
 
   def asecret
     cookies.signed[:asecret]
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def company?
+    current_user.type == "Company"
+  end
+
+  def talent?
+    current_user.type == "Talent"
   end
 end
