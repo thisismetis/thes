@@ -1,5 +1,4 @@
 class CompanySignupHandler
-  COMPANY = "Company"
 
   def initialize(client, oauth)
     @oauth = oauth
